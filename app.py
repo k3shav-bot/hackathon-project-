@@ -1,23 +1,40 @@
 import streamlit as st
+import json
+import os
 
-# Title of the Web App
+# 1. Function to load your JSON data
+def load_data():
+    # Path to your JSON file
+    data_path = os.path.join("data", "aktu_data.json")
+    with open(data_path, "r") as f:
+        return json.load(f)
+
+# 2. Page Config
+st.set_page_config(page_title="AKTU OneStop", page_icon="🎓")
 st.title("🎓 AKTU OneStop")
-st.subheader("Your Intelligent Exam Companion")
 
-# Sidebar for Navigation
-st.sidebar.header("Navigation")
-branch = st.sidebar.selectbox("Select your Branch", ["CS", "IT", "ME", "CE", "EC"])
-semester = st.sidebar.selectbox("Select Semester", ["1", "2", "3", "4", "5", "6", "7", "8"])
+# 3. Load the data
+try:
+    data = load_data()
+    
+    # 4. Sidebar Selections
+    st.sidebar.header("Filter Search")
+    # This automatically gets the subject names from your JSON keys!
+    subject_list = list(data.keys())
+    selected_subject = st.sidebar.selectbox("Select Subject", subject_list)
 
-# Main Content
-st.write(f"### Welcome {branch} Student! (Semester {semester})")
-st.info("Select a subject below to see high-frequency exam topics.")
+    # 5. Display the Content
+    st.header(f"Important Topics for: {selected_subject}")
+    
+    # Loop through the units in the selected subject
+    for unit, topics in data[selected_subject].items():
+        with st.expander(f"📌 {unit}"):
+            for topic in topics:
+                st.write(f"- {topic}")
+                
+    st.info("💡 Pro-tip: Focus on these topics to cover 80% of the question paper!")
 
-# Example Subject Dropdown
-subject = st.selectbox("Choose a Subject", ["Data Structures", "Discrete Structures", "Computer Organization"])
-
-if subject == "Data Structures":
-    st.write("#### 🔥 High Priority Topics (Based on last 5 years):")
-    st.write("- **Unit 1:** Sparse Matrix, Linked List Reversal")
-    st.write("- **Unit 2:** Stack using Queue, Postfix Evaluation")
-    st.success("Tip: Focus on Unit 1 and 3 for maximum marks!")
+except Exception as e:
+    st.error("Wait! We're still updating the library. Please check back in a bit!")
+    # This helps you debug if the file path is wrong
+    st.write(f"Error details: {e}")
