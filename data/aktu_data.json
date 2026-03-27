@@ -1,0 +1,11 @@
+{
+  "Data Structures": {
+    "Unit 1": ["Sparse Matrix Representation", "Time-Space Trade-off", "Asymptotic Notations"],
+    "Unit 2": ["Infix to Postfix Conversion", "Circular Queue Operations", "Recursion vs Iteration"],
+    "Unit 3": ["Binary Search Tree Operations", "AVL Tree Balancing", "Huffman Coding"]
+  },
+  "Computer Organization": {
+    "Unit 1": ["Bus Structure", "Functional Units"],
+    "Unit 2": ["IEEE Floating Point Format", "Booth's Algorithm"]
+  }
+}
