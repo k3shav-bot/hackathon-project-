@@ -1,0 +1,13 @@
+# Web Interface
+streamlit==1.32.0
+
+# Data Handling
+pandas==2.2.0
+numpy==1.26.0
+
+# PDF & Scraping 
+PyPDF2==3.0.1
+beautifulsoup4==4.12.0
+
+# Environment & Security
+python-dotenv==1.0.0
