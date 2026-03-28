@@ -7,5 +7,10 @@
   "Computer Organization": {
     "Unit 1": ["Bus Structure", "Functional Units"],
     "Unit 2": ["IEEE Floating Point Format", "Booth's Algorithm"]
+  },
+  "Theory of Automata": {
+    "Unit 1": ["Chomsky Hierarchy", "DFA vs NFA Construction", "Regular Expressions"],
+    "Unit 2": ["Pumping Lemma for Regular Sets", "Myhill-Nerode Theorem"],
+    "Unit 3": ["CFG Simplification", "Pushdown Automata (PDA)"]
   }
 }
